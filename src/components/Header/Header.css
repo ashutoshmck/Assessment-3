@@ -1,0 +1,14 @@
+.header{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10%;
+  height: 100px;
+  background-color: black;
+}
+.header >p {
+  font-family: 'Big Shoulders Inline Display';
+  font-weight: bold;
+  color: white;
+  font-size: 80px;
+}
