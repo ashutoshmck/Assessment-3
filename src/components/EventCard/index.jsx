@@ -16,7 +16,7 @@ import { EVENT_DETAILS_ROUTE } from '../../constants/routes';
 function EventCard(props) {
   const {
     id,
-    name, description, venue, date, timezone, img, bookmark
+    name, description, venue, date, timezone, img, bookmark, registered
   } = props;
 
   const navigate = useNavigate();
@@ -79,7 +79,8 @@ EventCard.propTypes = {
   date: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   timezone: PropTypes.string.isRequired,
-  bookmark: PropTypes.bool.isRequired
+  bookmark: PropTypes.bool.isRequired,
+  registered: PropTypes.bool.isRequired
 };
 
 export default EventCard;

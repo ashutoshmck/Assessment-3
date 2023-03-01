@@ -1,8 +1,8 @@
 import Header from './Header';
 import EventList from './EventList';
 import Footer from './Footer';
-import EventCard from './EventDetailsCard';
+import EventDetailsCard from './EventDetailsCard';
 
 export default {
-  Header, EventList, Footer, EventCard
+  Header, EventList, Footer, EventCard: EventDetailsCard
 };

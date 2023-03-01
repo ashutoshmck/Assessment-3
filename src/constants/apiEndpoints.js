@@ -8,3 +8,11 @@ export const GET_EVENT_URL = (eventId) => ({
   url: `api/events/${eventId}`,
   method: 'get'
 });
+export const UPDATE_EVENT_URL_REGISTER = (eventId) => ({
+  url: `api/events/${eventId}`,
+  method: 'patch'
+});
+export const UPDATE_EVENT_URL_BOOKMARK = (eventId) => ({
+  url: `api/events/${eventId}`,
+  method: 'patch'
+});

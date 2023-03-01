@@ -12,18 +12,30 @@ import { faBookmark as bookmarkSolid } from '@fortawesome/fontawesome-free-solid
 import { Link, useNavigate } from 'react-router-dom';
 import { getTimezoneDateFromUtcDate } from '../../utils/common';
 import { EVENT_DETAILS_ROUTE } from '../../constants/routes';
+import makeRequest from '../../utils/makeRequest';
+import { UPDATE_EVENT_URL_BOOKMARK, UPDATE_EVENT_URL_REGISTER } from '../../constants/apiEndpoints';
 
-function EventCard(props) {
+function EventDetailsCard(props) {
   const {
     id,
-    name, description, venue, date, timezone, img, bookmark
+    name, description, venue, date, timezone, img, bookmark: bookmarked, registered
   } = props;
 
   const navigate = useNavigate();
-  const [isBookmarked, setIsBookmarked] = useState(bookmark);
+  const [isBookmarked, setIsBookmarked] = useState(bookmarked);
+  const [isRegistered, setIsRegistered] = useState(false);
   const formattedDate = getTimezoneDateFromUtcDate(date, timezone);
-  const handleBookmarkClick = () => {
+  const handleBookmarkClick = async () => {
     setIsBookmarked(!isBookmarked);
+    await makeRequest(UPDATE_EVENT_URL_BOOKMARK(id), navigate, {
+      data: { isBookmarked: Boolean(isBookmarked) }
+    });
+  };
+  const handleRegister = async () => {
+    setIsRegistered(!isRegistered);
+    await makeRequest(UPDATE_EVENT_URL_REGISTER(id), navigate, {
+      data: { isRegistered: Boolean(isRegistered) }
+    });
   };
   return (
     <div className="eventDetailsCard">
@@ -61,7 +73,7 @@ function EventCard(props) {
           )
           : <button type="button" onClick={handleBookmarkClick}><FontAwesomeIcon icon={bookmarkSolid} color="#EA8282" /></button>}
       </div>
-      <button className="registerButton" type="button">REGISTER</button>
+      <button className="registerButton" type="button" onClick={handleRegister}>REGISTER</button>
     </div>
 
   // <button className="eventCardButton"
@@ -71,7 +83,7 @@ function EventCard(props) {
 
   );
 }
-EventCard.propTypes = {
+EventDetailsCard.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
@@ -79,7 +91,8 @@ EventCard.propTypes = {
   date: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   timezone: PropTypes.string.isRequired,
-  bookmark: PropTypes.bool.isRequired
+  bookmark: PropTypes.bool.isRequired,
+  registered: PropTypes.bool.isRequired
 };
 
-export default EventCard;
+export default EventDetailsCard;

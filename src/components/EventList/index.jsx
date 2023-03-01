@@ -30,7 +30,7 @@ function EventList() {
   const handleSearch = (searchParam) => {
     if (searchParam === '') {
       setSearch(searchParam);
-      setFilteredEvents(eventData);
+      // setFilteredEvents(filteredEvents);
     } else {
       console.log(searchParam);
       setSearch(searchParam);
@@ -40,9 +40,9 @@ function EventList() {
     }
   };
   const handleFilter = (filterName) => {
-    handleSearch(search);
     setFilteredEvents(filterEvents(filterName, eventData));
     setFilter(filterName);
+    handleSearch(search);
   };
 
   return (
@@ -113,6 +113,7 @@ function EventList() {
             timezone={event.timezone}
             img={event.imgUrl}
             bookmark={event.isBookmarked}
+            registered={event.isRegistered}
           />
         ))}
       </div>
