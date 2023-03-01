@@ -32,7 +32,6 @@ function EventList() {
       setSearch(searchParam);
       // setFilteredEvents(filteredEvents);
     } else {
-      console.log(searchParam);
       setSearch(searchParam);
       setFilteredEvents(filteredEvents.filter(
         (event) => event.name.includes(searchParam.toLowerCase())

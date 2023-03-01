@@ -16,3 +16,7 @@ export const UPDATE_EVENT_URL_BOOKMARK = (eventId) => ({
   url: `api/events/${eventId}`,
   method: 'patch'
 });
+export const GET_THEMES_URL = {
+  url: 'api/themes',
+  method: 'get'
+};

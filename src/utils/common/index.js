@@ -17,3 +17,8 @@ export const filterEvents = (filter, events) => {
       return events;
   }
 };
+export const getThemeColor = (themes) => {
+  const themeId = themes.preferredThemeId;
+  const color = (themes.themes.filter((theme) => theme.id === themeId))[0].colorHexCode;
+  return color;
+};

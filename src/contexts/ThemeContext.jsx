@@ -5,10 +5,11 @@ import PropTypes from 'prop-types';
 const ThemeContext = createContext({});
 
 function ThemeProvider({ children }) {
-  const [themes, setThemes] = useState([]);
+  const [themes, setThemes] = useState(null);
+  const [color, setColor] = useState('#00000');
   return (
     <ThemeContext.Provider value={{
-      themes, setThemes
+      themes, setThemes, color, setColor
     }}
     >
       {children}
