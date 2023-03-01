@@ -48,15 +48,17 @@ function EventList() {
     <div className="eventsList">
       <div className="options">
         <div className="filter">
+          <div className="filterTitle">
+            <FontAwesomeIcon icon={faFilter} size="3x" />
+            <p>{'  '}</p>
+            <h1>Filter</h1>
+            <p>{'  '}</p>
+            <FontAwesomeIcon icon={faChevronUp} size="3x" />
+          </div>
+
           <div className="SearchBar">
             <input onChange={(value) => handleSearch(value.target.value)} value={search} />
           </div>
-          <FontAwesomeIcon icon={faFilter} size="3x" />
-          <p>{'  '}</p>
-          <h1>Filter</h1>
-          <p>{'  '}</p>
-          <FontAwesomeIcon icon={faChevronUp} size="3x" />
-
         </div>
         <div className="filters">
           <div className="filterColumn1">

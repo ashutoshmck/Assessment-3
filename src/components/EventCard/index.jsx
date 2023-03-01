@@ -12,6 +12,8 @@ import { faBookmark as bookmarkSolid } from '@fortawesome/fontawesome-free-solid
 import { Link, useNavigate } from 'react-router-dom';
 import { getTimezoneDateFromUtcDate } from '../../utils/common';
 import { EVENT_DETAILS_ROUTE } from '../../constants/routes';
+import makeRequest from '../../utils/makeRequest';
+import { UPDATE_EVENT_URL_BOOKMARK } from '../../constants/apiEndpoints';
 
 function EventCard(props) {
   const {
@@ -22,8 +24,11 @@ function EventCard(props) {
   const navigate = useNavigate();
   const [isBookmarked, setIsBookmarked] = useState(bookmark);
   const formattedDate = getTimezoneDateFromUtcDate(date, timezone);
-  const handleBookmarkClick = () => {
+  const handleBookmarkClick = async () => {
     setIsBookmarked(!isBookmarked);
+    await makeRequest(UPDATE_EVENT_URL_BOOKMARK(id), navigate, {
+      data: { isBookmarked: Boolean(isBookmarked) }
+    });
   };
   return (
     <div className="eventCard">
