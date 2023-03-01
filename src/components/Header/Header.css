@@ -6,9 +6,13 @@
   height: 200px;
   background-color: black;
 }
-.header >p {
+.header >button>p {
   font-family: 'Big Shoulders Inline Display';
   font-weight: bold;
   color: white;
   font-size: 80px;
+}
+.header > button{
+  background-color: transparent;
+  border: none;
 }

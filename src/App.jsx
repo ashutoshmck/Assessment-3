@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { EVENT_DETAILS_ROUTE, HOME_ROUTE } from './constants/routes';
+import { EVENT_DETAILS_ROUTE, HOME_ROUTE, ERROR_ROUTE } from './constants/routes';
 import Pages from './pages/index';
 import EventContext from './contexts/EventsContext';
 
@@ -28,6 +28,7 @@ function App() {
               </EventContext.EventProvider>
 )}
           />
+          <Route path={`${ERROR_ROUTE}/:errorCode?`} element={<Pages.ErrorPage />} />
         </Routes>
       </BrowserRouter>
     </div>

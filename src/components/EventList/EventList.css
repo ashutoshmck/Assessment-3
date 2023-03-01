@@ -46,3 +46,19 @@
   flex-direction: column;
   align-items: flex-end;
 }
+.radioButton{
+  background-color: transparent;
+  border: none;
+}
+.radioButtonContent{
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+.radioButtonContent > p {
+  font-weight: bold;
+  font-size: larger;
+  margin-left: 10px;
+  margin-right: 10px;
+}

@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/fontawesome-free-regular';
 import { faBookmark as bookmarkSolid } from '@fortawesome/fontawesome-free-solid';
 import { Link, useNavigate } from 'react-router-dom';
-import getTimezoneDateFromUtcDate from '../../utils/common';
+import { getTimezoneDateFromUtcDate } from '../../utils/common';
 import { EVENT_DETAILS_ROUTE } from '../../constants/routes';
 
 function EventCard(props) {

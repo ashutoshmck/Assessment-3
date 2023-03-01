@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Components from '../../components';
 import { GET_EVENT_URL } from '../../constants/apiEndpoints';
+import { HOME_ROUTE } from '../../constants/routes';
 import makeRequest from '../../utils/makeRequest';
 import './EventPage.css';
 
 function EventPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [event, setEvent] = useState(null);
   useEffect(() => {
     makeRequest(GET_EVENT_URL(id)).then((response) => {
@@ -15,7 +17,7 @@ function EventPage() {
   }, []);
   return (
     <div>
-      <Components.Header />
+      <Components.Header onClick={() => { navigate(HOME_ROUTE); }} />
       <div className="eventDetailsCardContainer">
         {event ? (
           <Components.EventCard

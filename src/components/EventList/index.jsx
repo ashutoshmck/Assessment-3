@@ -8,24 +8,50 @@ import Context from '../../contexts/EventsContext';
 import makeRequest from '../../utils/makeRequest';
 import EventCard from '../EventCard';
 import './EventList.css';
+import { filterEvents } from '../../utils/common';
 
 function EventList() {
   // eslint-disable-next-line no-unused-vars
   const { eventData, setEventData } = useContext(Context.EventsContext);
   const [filter, setFilter] = useState('ALL');
+  const [filteredEvents, setFilteredEvents] = useState([]);
+  // eslint-disable-next-line no-unused-vars
+  const [search, setSearch] = useState('');
   useEffect(() => {
     makeRequest(EVENTS_URL)
       .then((response) => {
         setEventData(response.sort((a, b) => new Date(b.date) - new Date(a.date)));
+        setFilteredEvents(response.sort((a, b) => new Date(b.date) - new Date(a.date)));
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+  const handleSearch = (searchParam) => {
+    if (searchParam === '') {
+      setSearch(searchParam);
+      setFilteredEvents(eventData);
+    } else {
+      console.log(searchParam);
+      setSearch(searchParam);
+      setFilteredEvents(filteredEvents.filter(
+        (event) => event.name.includes(searchParam.toLowerCase())
+      ));
+    }
+  };
+  const handleFilter = (filterName) => {
+    handleSearch(search);
+    setFilteredEvents(filterEvents(filterName, eventData));
+    setFilter(filterName);
+  };
+
   return (
     <div className="eventsList">
       <div className="options">
         <div className="filter">
+          <div className="SearchBar">
+            <input onChange={(value) => handleSearch(value.target.value)} value={search} />
+          </div>
           <FontAwesomeIcon icon={faFilter} size="3x" />
           <p>{'  '}</p>
           <h1>Filter</h1>
@@ -35,18 +61,18 @@ function EventList() {
         </div>
         <div className="filters">
           <div className="filterColumn1">
-            <button type="button" className="radioButton" onClick={() => { setFilter('ALL'); }}>
+            <button type="button" className="radioButton" onClick={() => { handleFilter('ALL'); }}>
               <div className="radioButtonContent">
-                {filter !== 'ALL' ? <FontAwesomeIcon icon={faCircle} />
-                  : <FontAwesomeIcon icon={faDotCircle} />}
+                {filter !== 'ALL' ? <FontAwesomeIcon icon={faCircle} size="2x" />
+                  : <FontAwesomeIcon icon={faDotCircle} size="2x" />}
 
                 <p>ALL</p>
               </div>
             </button>
-            <button type="button" className="radioButton" onClick={() => { setFilter('REGISTERED'); }}>
+            <button type="button" className="radioButton" onClick={() => { handleFilter('REGISTERED'); }}>
               <div className="radioButtonContent">
-                {filter !== 'REGISTERED' ? <FontAwesomeIcon icon={faCircle} />
-                  : <FontAwesomeIcon icon={faDotCircle} />}
+                {filter !== 'REGISTERED' ? <FontAwesomeIcon icon={faCircle} size="2x" />
+                  : <FontAwesomeIcon icon={faDotCircle} size="2x" />}
 
                 <p>REGISTERED</p>
               </div>
@@ -54,20 +80,20 @@ function EventList() {
           </div>
           <div className="filterColumn2">
 
-            <button type="button" className="radioButton" onClick={() => { setFilter('BOOKMARKED'); }}>
+            <button type="button" className="radioButton" onClick={() => { handleFilter('BOOKMARKED'); }}>
               <div className="radioButtonContent">
-                {filter !== 'BOOKMARKED' ? <FontAwesomeIcon icon={faCircle} />
-                  : <FontAwesomeIcon icon={faDotCircle} />}
-
                 <p>BOOKMARKED</p>
+                {filter !== 'BOOKMARKED' ? <FontAwesomeIcon icon={faCircle} size="2x" />
+                  : <FontAwesomeIcon icon={faDotCircle} size="2x" />}
+
               </div>
             </button>
-            <button type="button" className="radioButton" onClick={() => { setFilter('SEATS AVAILABLE'); }}>
+            <button type="button" className="radioButton" onClick={() => { handleFilter('SEATS AVAILABLE'); }}>
               <div className="radioButtonContent">
-                {filter !== 'SEATS AVAILABLE' ? <FontAwesomeIcon icon={faCircle} />
-                  : <FontAwesomeIcon icon={faDotCircle} />}
-
                 <p>SEATS AVAILABLE</p>
+                {filter !== 'SEATS AVAILABLE' ? <FontAwesomeIcon icon={faCircle} size="2x" />
+                  : <FontAwesomeIcon icon={faDotCircle} size="2x" />}
+
               </div>
             </button>
           </div>
@@ -75,7 +101,8 @@ function EventList() {
         </div>
       </div>
       <div className="events">
-        {eventData.map((event) => (
+
+        {filteredEvents.map((event) => (
           <EventCard
             key={event.id}
             id={event.id}
