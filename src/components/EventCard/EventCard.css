@@ -7,7 +7,6 @@
   border-radius: 20px;
   flex-direction: column;
   margin: 10px;
-  background-color: purple;
   width: 400px;
   height: 600px;
 }
@@ -21,8 +20,20 @@
   display: flex;
   flex-direction: column;
 }
-.eventDetails >p {
+.eventDetails > eventDetailsText
+{
+  height: 30%;
+  display: flex;
+}
+.eventDetailsText> p {
   color: white;
+
+}
+.eventDescription{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 .eventName{
   font-weight: bold;
@@ -32,12 +43,42 @@
 .buttons{
   height: 10%;
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-around;
   flex-direction: row;
+}
+.buttons > h1{
+  color: white;
+}
+.status{
+  width: 80%;
+  margin: 5%;
+}
+.registerStatus{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.registerStatus > p{
+  color: #A0F3AD;
+  font-size: x-large;
+  font-weight: bold;
+  margin-left: 2%;
+}
+.seatStatus{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.seatStatus > p{
+  color: #ECECAB;
+  font-size: x-large;
+  font-weight: bold;
+  margin-left: 2%;
 }
 .buttons > button{
   width: 20%;
-  height: 30%;
+  height: 100%;
 border: none;
 background-color: transparent;
 }

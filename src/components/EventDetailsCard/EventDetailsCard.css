@@ -31,12 +31,13 @@
 .buttons{
   height: 10%;
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-around;
   flex-direction: row;
 }
 .buttons > button{
   width: 20%;
-  height: 30%;
+  height: 100%;
 border: none;
 background-color: transparent;
 }

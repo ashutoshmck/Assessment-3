@@ -8,8 +8,9 @@ import { getThemeColor } from '../../utils/common';
 
 function Header(props) {
   const { onClick } = props;
+  const { color } = useContext(ThemeContext.ThemeContext);
   return (
-    <div className="header">
+    <div className="header" style={{ backgroundColor: color }}>
       <button type="button" onClick={onClick}>
         <p>
           EVENTIFY

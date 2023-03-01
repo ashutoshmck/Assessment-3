@@ -28,7 +28,7 @@ function EventDetailsCard(props) {
   const handleBookmarkClick = async () => {
     setIsBookmarked(!isBookmarked);
     await makeRequest(UPDATE_EVENT_URL_BOOKMARK(id), navigate, {
-      data: { isBookmarked: Boolean(isBookmarked) }
+      data: { isBookmarked: Boolean(!isBookmarked) }
     });
   };
   const handleRegister = async () => {

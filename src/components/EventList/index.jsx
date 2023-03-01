@@ -30,11 +30,11 @@ function EventList() {
   const handleSearch = (searchParam) => {
     if (searchParam === '') {
       setSearch(searchParam);
-      // setFilteredEvents(filteredEvents);
+      setFilteredEvents(filterEvents(filter, eventData));
     } else {
       setSearch(searchParam);
       setFilteredEvents(filteredEvents.filter(
-        (event) => event.name.includes(searchParam.toLowerCase())
+        (event) => event.name.toLowerCase().startsWith(searchParam.toLowerCase())
       ));
     }
   };
@@ -115,6 +115,7 @@ function EventList() {
             img={event.imgUrl}
             bookmark={event.isBookmarked}
             registered={event.isRegistered}
+            seatsAvailable={event.areSeatsAvailable}
           />
         ))}
       </div>
