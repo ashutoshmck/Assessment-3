@@ -1,12 +1,12 @@
-.header{
+.footer{
   display: flex;
   justify-content: flex-start;
   align-items: center;
   padding-left: 10%;
-  height: 200px;
+  height: 100px;
   background-color: black;
 }
-.header >p {
+.footer >p {
   font-family: 'Big Shoulders Inline Display';
   font-weight: bold;
   color: white;

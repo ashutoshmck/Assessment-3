@@ -6,6 +6,7 @@ function HomePage() {
     <div className="homePage">
       <Components.Header />
       <Components.EventList />
+      <Components.Footer />
     </div>
   );
 }

@@ -1,0 +1,55 @@
+.eventDetailsCardButton{
+  border: none;
+  background-color: transparent;
+}
+.eventDetailsCard{
+  display: flex;
+  border-radius: 20px;
+  flex-direction: column;
+  margin: 10px;
+  background-color: purple;
+  width: 80%;
+}
+.eventDetailsImg{
+  height: 50%;
+  
+  border-bottom: 1px solid white;
+}
+.eventDetailsContent{
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.eventDetailsContent >p {
+  color: white;
+}
+.eventName{
+  font-weight: bold;
+  font-size: x-large;
+  text-transform: uppercase;
+}
+.buttons{
+  height: 10%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+.buttons > button{
+  width: 20%;
+  height: 30%;
+border: none;
+background-color: transparent;
+}
+.eventDetailsImg >img{
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  width: 100%;
+  height: 100%;
+}
+.registerButton{
+  height: 20%;
+  border: none;
+  border-radius: 10px;
+  width: 20%;
+  background-color: white;
+}
