@@ -37,9 +37,12 @@
 }
 .eventName{
   font-weight: bold;
+  font-family: 'Sofia Sans';
   font-size: x-large;
   text-transform: uppercase;
+  color: white;
 }
+
 .buttons{
   height: 10%;
   display: flex;
