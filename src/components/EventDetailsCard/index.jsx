@@ -59,7 +59,6 @@ function EventDetailsCard(props) {
 
       </div>
       <div className="buttons">
-
         {isBookmarked
           ? (
             <button
